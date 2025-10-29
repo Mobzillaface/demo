@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WELCOME TO THE BAZZAR</title>
+  <style>
+    /* full-viewport background image */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      background-image: url('dude.png'); /* ← change this to your image path or URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(0.6); /* darken so the text pops */
+      z-index: -2;
+    }
+
+    /* subtle overlay to increase contrast */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35));
+      z-index: -1;
+    }
+
+    /* center container */
+    .center {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 8vw, 8rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      /* stroke to make the text stand out on busy backgrounds */
+      -webkit-text-stroke: 2px rgba(0,0,0,0.6);
+      /* animation */
+      animation: flashColor 0.15s steps(2, end) infinite;
+      /* optional glow */
+      text-shadow:
+        0 0 10px rgba(255,0,0,0.35),
+        0 0 20px rgba(255,255,255,0.10);
+    }
+
+    /* flashing between red and white */
+    @keyframes flashColor {
+      0%   { color: #ff0000; text-shadow: 0 0 10px rgba(255,0,0,0.6); }
+      50%  { color: #ffffff; text-shadow: 0 0 14px rgba(255,255,255,0.8); }
+      100% { color: #ff0000; text-shadow: 0 0 10px rgba(255,0,0,0.6); }
+    }
+
+    /* small-screen spacing */
+    @media (max-width: 420px) {
+      h1 { letter-spacing: 0.12em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <main class="center" role="main">
+    <h1 aria-label="Welcome to the Bazzar">WELCOME TO THE BAZZAR</h1>
+  </main>
+</body>
+</html>
